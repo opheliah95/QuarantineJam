@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
     public float jumpHeight = 2f;
     public float moveSpeed = 5f;
 
+    public int damage = 1;
     [SerializeField]
     Rigidbody2D rb2d;
 

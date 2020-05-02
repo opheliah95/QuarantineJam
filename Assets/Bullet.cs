@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
 
     public float lifetime = 1.0f;
 
+    public int damage = 1;
+
     public float distance;
 
     public LayerMask whatIsSoild;
@@ -28,7 +30,8 @@ public class Bullet : MonoBehaviour
            
             if(hit.collider.CompareTag("Enemy"))
             {
-                Debug.Log("hits enemy");
+                hit.collider.gameObject.GetComponent<Enemy>().takeDamage(damage);
+                Debug.Log(hit.collider.gameObject.GetComponent<Enemy>().health);
             }
 
             DestroyProjectile();
