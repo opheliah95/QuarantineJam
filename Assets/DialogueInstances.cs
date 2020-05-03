@@ -5,6 +5,7 @@ using UnityEngine;
 public class DialogueInstances : MonoBehaviour
 {
     public string[] characterName;
+    [TextArea(5,10)]
     public string[] sentences;
 
     [SerializeField]
@@ -35,13 +36,7 @@ public class DialogueInstances : MonoBehaviour
             activated = true;
             dialogueBox.SetActive(true);
             //SettingPlayerAndEnemy(false);
-
-            // if it is a different dialogue then set index to zero
-            if(dialogueManager.dialogueObject != gameObject)
-            {
-                dialogueManager.index = 0;
-            }
-
+            dialogueManager.index = 0;
             dialogueManager.dialogueObject = gameObject;
             dialogueManager.characterName = characterName;
             dialogueManager.sentences = sentences;

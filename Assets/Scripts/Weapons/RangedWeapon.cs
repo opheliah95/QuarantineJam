@@ -38,6 +38,7 @@ public class RangedWeapon : MonoBehaviour
         if (coolOff <= 0)
         {
             GameObject obj = Instantiate(shoots, weaponHead.position, transform.rotation);
+            SoundManager.playSound("Shoot");
             coolOff = coolOffTimer;
         }
         else

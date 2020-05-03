@@ -30,6 +30,7 @@ public class Backpack : MonoBehaviour
             GameObject obj = Instantiate(myObj, transform.position, Quaternion.identity);
             obj.transform.parent = hand.transform;
             obj.transform.localPosition = position;
+            obj.transform.localScale = hand.transform.localScale;
             obj.SetActive(false);
             GetComponent<SpriteRenderer>().enabled = false;
 

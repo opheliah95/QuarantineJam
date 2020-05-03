@@ -102,7 +102,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (backPackState != 0)
         {
-           
+            if(animController.GetCurrentAnimatorStateInfo(0).IsName("Stab"))
                 GetComponent<SpriteRenderer>().sprite = backPackIdle;
         }
             

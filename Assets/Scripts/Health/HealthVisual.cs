@@ -13,6 +13,7 @@ public class HealthVisual : MonoBehaviour
     public float distanceBtwHearts = 50;
     public float sizeDelta = 50;
 
+
     // hearts
     [SerializeField]
     private Sprite emptyheartSprite;
@@ -91,8 +92,7 @@ public class HealthVisual : MonoBehaviour
     void onDeath()
     {
         Debug.Log("you are dead...");
-        // but we can make a quick death scene...
-        //SceneManager.LoadScene("Death");
+        SceneManager.LoadScene("Death");
     }
 
 

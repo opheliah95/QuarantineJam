@@ -5,13 +5,10 @@ using UnityEngine;
 public class MeleeWeapon : MonoBehaviour
 {
     GameObject player;
-
-    [SerializeField]
-    public Transform weaponHead;
-
-    [SerializeField]
-    protected GameObject shoots;
-
+    public Transform attackPos;
+    public int damage = 1;
+    public float attackRange;
+    public LayerMask whatIsEnemy;
     public float coolOffTimer;
 
     [SerializeField]
@@ -33,8 +30,16 @@ public class MeleeWeapon : MonoBehaviour
 
     void Shoot()
     {
-        GetComponent<CircleCollider2D>().enabled = true;
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
+
+        foreach(Collider2D enemy in enemies)
+        {
+            enemy.gameObject.GetComponent<Enemy>().takeDamage(damage);
+
+        }
+
         player.GetComponent<Animator>().SetTrigger("Stab");
+        SoundManager.playSound("Knife");
     }
 
     private void OnEnable()
@@ -52,5 +57,10 @@ public class MeleeWeapon : MonoBehaviour
         GetComponent<CircleCollider2D>().enabled = false;
     }
 
-    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPos.position, attackRange);
+    }
+
 }
