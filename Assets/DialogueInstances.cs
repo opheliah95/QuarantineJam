@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DialogueInstances : MonoBehaviour
 {
-    public string characterName;
+    public string[] characterName;
     public string[] sentences;
 
     [SerializeField]
@@ -14,6 +14,9 @@ public class DialogueInstances : MonoBehaviour
 
     [SerializeField]
     public GameObject dialogueBox;
+
+    [SerializeField]
+    public GameObject continueButton;
 
     private void Start()
     {
@@ -27,6 +30,13 @@ public class DialogueInstances : MonoBehaviour
         if(collision.gameObject.tag == "Player" && !activated)
         {
             dialogueBox.SetActive(true);
+            //SettingPlayerAndEnemy(false);
+            // if it is a different dialogue then set index to zero
+            if(dialogueManager.dialogueObject != gameObject)
+            {
+                dialogueManager.index = 0;
+            }
+
             dialogueManager.dialogueObject = gameObject;
             dialogueManager.characterName = characterName;
             dialogueManager.sentences = sentences;
@@ -35,5 +45,39 @@ public class DialogueInstances : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        activated = false;
+        dialogueBox.SetActive(false);
+        continueButton.SetActive(true);
+        SettingPlayerAndEnemy(true);
+    }
 
+    public void SettingPlayerAndEnemy( bool con = true)
+    {
+        // need to fix movement bug
+        // disable or enable player movement
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        player.GetComponent<PlayerManager>().enabled = con;
+
+        foreach(GameObject enemy in enemies)
+        {
+            enemy.GetComponent<Enemy>().enabled = con;
+        }
+
+        // disable or enable player weapon
+        GameObject hand = GameObject.FindGameObjectWithTag("Hand");
+        hand.GetComponent<Rotate>().enabled = con;
+        hand.GetComponent<WeaponSwitch>().enabled = con;
+
+        foreach(Transform child in hand.transform)
+        {
+            if (child.gameObject.GetComponent<RangedWeapon>() != null)
+                child.gameObject.GetComponent<RangedWeapon>().enabled = con;
+        }
+
+    }
+
+   
 }

@@ -13,6 +13,7 @@ public class Rotate : MonoBehaviour
     [SerializeField]
     Vector2 mouseMovement;
 
+
     private void Awake()
     {
         playerController = new Controller();
@@ -34,8 +35,9 @@ public class Rotate : MonoBehaviour
 
 
         // fix when mouse is on the other side of the body
-        if(rotationAngle < -90 || rotationAngle > 90)
+        if((rotationAngle < -90 || rotationAngle > 90))
         {
+           
             if(player.transform.eulerAngles.y == 0)
             {
                 transform.localRotation = Quaternion.Euler(180, 0, -rotationAngle);
@@ -44,6 +46,12 @@ public class Rotate : MonoBehaviour
             {
                 transform.localRotation = Quaternion.Euler(180, 180, -rotationAngle);
             }
+
         }
+       
+        
     }
+
+
+   
 }

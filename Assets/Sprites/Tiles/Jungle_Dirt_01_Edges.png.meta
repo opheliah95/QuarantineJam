@@ -1,0 +1,425 @@
+fileFormatVersion: 2
+guid: 8a52019d840f7a24087adc6a9895901c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3936798095794930369
+    second: Jungle_Dirt_01_Edges_0
+  - first:
+      213: -3607051688481120257
+    second: Jungle_Dirt_01_Edges_1
+  - first:
+      213: -6650978747218498076
+    second: Jungle_Dirt_01_Edges_2
+  - first:
+      213: 918379841196709886
+    second: Jungle_Dirt_01_Edges_3
+  - first:
+      213: 87360504998041239
+    second: Jungle_Dirt_01_Edges_4
+  - first:
+      213: 6776693444466124153
+    second: Jungle_Dirt_01_Edges_5
+  - first:
+      213: 1196222381586486086
+    second: Jungle_Dirt_01_Edges_6
+  - first:
+      213: 2726583002045608804
+    second: Jungle_Dirt_01_Edges_7
+  - first:
+      213: 5704776405171343990
+    second: Jungle_Dirt_01_Edges_8
+  - first:
+      213: -7976655888159938739
+    second: Jungle_Dirt_01_Edges_9
+  - first:
+      213: 6435439389087450069
+    second: Jungle_Dirt_01_Edges_10
+  - first:
+      213: 2315927405983840369
+    second: Jungle_Dirt_01_Edges_11
+  - first:
+      213: -3728311284953118586
+    second: Jungle_Dirt_01_Edges_12
+  - first:
+      213: 8477147958461055849
+    second: Jungle_Dirt_01_Edges_13
+  - first:
+      213: -2067549994656171163
+    second: Jungle_Dirt_01_Edges_14
+  - first:
+      213: 2432722259788376478
+    second: Jungle_Dirt_01_Edges_15
+  - first:
+      213: -5690442829316892142
+    second: Jungle_Dirt_01_Edges_16
+  - first:
+      213: 727596462208336904
+    second: Jungle_Dirt_01_Edges_17
+  - first:
+      213: 120635327942462939
+    second: Jungle_Dirt_01_Edges_18
+  - first:
+      213: -2717721791013247220
+    second: Jungle_Dirt_01_Edges_19
+  - first:
+      213: -3178447122184892916
+    second: Jungle_Dirt_01_Edges_20
+  - first:
+      213: -4757774764367246435
+    second: Jungle_Dirt_01_Edges_21
+  - first:
+      213: -8053624006101085684
+    second: Jungle_Dirt_01_Edges_22
+  - first:
+      213: -7507032652387203056
+    second: Jungle_Dirt_01_Edges_23
+  - first:
+      213: -3845633862130563528
+    second: Jungle_Dirt_01_Edges_24
+  - first:
+      213: -2917873270403875668
+    second: Jungle_Dirt_01_Edges_25
+  - first:
+      213: 3302195759173787411
+    second: Jungle_Dirt_01_Edges_26
+  - first:
+      213: -2062581146953783500
+    second: Jungle_Dirt_01_Edges_27
+  - first:
+      213: -4832983212302304646
+    second: Jungle_Dirt_01_Edges_28
+  - first:
+      213: -1085648457483148009
+    second: Jungle_Dirt_01_Edges_29
+  - first:
+      213: 6283830334814634464
+    second: Jungle_Dirt_01_Edges_30
+  - first:
+      213: 3782144374189293741
+    second: Jungle_Dirt_01_Edges_31
+  - first:
+      213: 8376164380361448850
+    second: Jungle_Dirt_01_Edges_32
+  - first:
+      213: 4691164728568354451
+    second: Jungle_Dirt_01_Edges_33
+  - first:
+      213: -1107674193062397621
+    second: Jungle_Dirt_01_Edges_34
+  - first:
+      213: 4755762396223617181
+    second: Jungle_Dirt_01_Edges_35
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Jungle_Dirt_01_Edges_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3d75bb6dfead59c0800000000000000
+      internalID: -3936798095794930369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jungle_Dirt_01_Edges_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fff1c9da99d21fdc0800000000000000
+      internalID: -3607051688481120257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jungle_Dirt_01_Edges_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ed6e5b511af2b3a0800000000000000
+      internalID: -6650978747218498076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jungle_Dirt_01_Edges_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef7d86b899dbebc00800000000000000
+      internalID: 918379841196709886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jungle_Dirt_01_Edges_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7969ecb9aed563100800000000000000
+      internalID: 87360504998041239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jungle_Dirt_01_Edges_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9752f1588c6ab0e50800000000000000
+      internalID: 6776693444466124153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jungle_Dirt_01_Edges_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64395de0be5d99010800000000000000
+      internalID: 1196222381586486086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jungle_Dirt_01_Edges_7
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 463fb875bc4c6d520800000000000000
+      internalID: 2726583002045608804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jungle_Dirt_01_Edges_8
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67294415aef6b2f40800000000000000
+      internalID: 5704776405171343990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

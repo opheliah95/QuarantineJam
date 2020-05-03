@@ -7,12 +7,15 @@ public class Dialogue : MonoBehaviour
 {
     public TextMeshProUGUI textDisplay;
     public TextMeshProUGUI characterNameDisplay;
+
     public GameObject continueButton;
     public GameObject dialogueObject;
-    public string characterName;
+
+    public string[] characterName;
     public string[] sentences;
+
     public float typingSpeed = 0.02f;
-    private int index;
+    public int index;
 
 
     public void startTyping()
@@ -22,7 +25,12 @@ public class Dialogue : MonoBehaviour
   
     IEnumerator Type()
     {
-        characterNameDisplay.text = characterName;
+        characterNameDisplay.text = characterName[index];
+
+        // clean the text
+        if (index == 0)
+            textDisplay.text = "";
+
         foreach(char letter in sentences[index].ToCharArray())
         {
             textDisplay.text += letter;
@@ -55,8 +63,10 @@ public class Dialogue : MonoBehaviour
         else
         {
             textDisplay.text = "...";
+            index = 0;
             dialogueObject.GetComponent<DialogueInstances>().dialogueBox.SetActive(false);
             dialogueObject.GetComponent<DialogueInstances>().activated = false;
+            dialogueObject.GetComponent<DialogueInstances>().SettingPlayerAndEnemy(true);
         }
     }
 }

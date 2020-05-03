@@ -16,14 +16,15 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
+        gameObject.GetComponent<Rigidbody2D>().velocity = transform.right * speed;
         Invoke("DestroyProjectile", lifetime);
     }
 
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSoild);
-        transform.Translate(transform.up * speed * Time.deltaTime);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward, distance, whatIsSoild);
+        //gameObject.GetComponent<Rigidbody2D>().AddForce(transform.forward* speed * Time.deltaTime);
 
         if(hit.collider != null)
         {
@@ -31,7 +32,6 @@ public class Bullet : MonoBehaviour
             if(hit.collider.CompareTag("Enemy"))
             {
                 hit.collider.gameObject.GetComponent<Enemy>().takeDamage(damage);
-                Debug.Log(hit.collider.gameObject.GetComponent<Enemy>().health);
             }
 
             DestroyProjectile();

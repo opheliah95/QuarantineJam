@@ -9,6 +9,9 @@ TagManager:
   - Enemy
   - Dialogue
   - DialogueBox
+  - Hand
+  - Point
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -46,6 +49,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Environment
+    uniqueID: 805414217
+    locked: 0
   - name: Ground
     uniqueID: 2760432973
     locked: 0
@@ -61,6 +67,6 @@ TagManager:
   - name: Bullet
     uniqueID: 1398835787
     locked: 0
-  - name: 
-    uniqueID: 805414217
+  - name: Arm
+    uniqueID: 146603003
     locked: 0

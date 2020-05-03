@@ -5,7 +5,7 @@ using UnityEngine;
 public class RangedWeapon : MonoBehaviour
 {
     [SerializeField]
-    protected Transform weaponHead;
+    public Transform weaponHead;
 
     [SerializeField]
     protected GameObject shoots;
