@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedWeapon : MonoBehaviour
+public class MeleeWeapon : MonoBehaviour
 {
+    GameObject player;
+
     [SerializeField]
     public Transform weaponHead;
 
@@ -24,29 +26,16 @@ public class RangedWeapon : MonoBehaviour
         controls.Player.Shoot.performed += ctx => Shoot();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        coolOff = coolOffTimer;
-        weaponHead = gameObject.transform.GetChild(0);
+        player = GameObject.FindGameObjectWithTag("Player");
     }
-
-
 
     void Shoot()
     {
-        if (coolOff <= 0)
-        {
-            GameObject obj = Instantiate(shoots, weaponHead.position, transform.rotation);
-            coolOff = coolOffTimer;
-        }
-        else
-        {
-            coolOff -= Time.deltaTime;
-        }
+        GetComponent<CircleCollider2D>().enabled = true;
+        player.GetComponent<Animator>().SetTrigger("Stab");
     }
-
-
 
     private void OnEnable()
     {
@@ -57,4 +46,11 @@ public class RangedWeapon : MonoBehaviour
     {
         controls.Disable();
     }
+
+    public void disbleCollider()
+    {
+        GetComponent<CircleCollider2D>().enabled = false;
+    }
+
+    
 }

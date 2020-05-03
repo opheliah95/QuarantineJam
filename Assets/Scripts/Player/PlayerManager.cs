@@ -24,6 +24,9 @@ public class PlayerManager : MonoBehaviour
 
     public bool facingRight;
 
+    [SerializeField]
+    Sprite backPackIdle;
+
     private void Awake()
     {
         facingRight = true;
@@ -64,7 +67,7 @@ public class PlayerManager : MonoBehaviour
         if (horizontal > 0 && !facingRight || horizontal < 0 && facingRight)
         {
             
-            flipCharacterAndWeapon();
+            flipCharacterOnly();
            
         }
     }
@@ -76,11 +79,14 @@ public class PlayerManager : MonoBehaviour
 
         // hand script
         GameObject hand = GameObject.FindGameObjectWithTag("Hand");
+        /*
         GameObject weaponHead = hand.GetComponent<WeaponSwitch>().currentWeapon.transform.GetChild(0).gameObject;
-        Debug.Log(weaponHead);
-        Vector3 theScale = weaponHead.transform.localScale;
+        Debug.Log(hand.GetComponent<WeaponSwitch>().currentWeapon);
+        */
+
+        Vector3 theScale = hand.transform.localScale;
         theScale.x *= -1;
-        weaponHead.transform.localScale = theScale;
+        hand.transform.localScale = theScale;
     }
 
     public void flipCharacterOnly()
@@ -92,6 +98,15 @@ public class PlayerManager : MonoBehaviour
         transform.localScale = theScale;
     }
 
+    public void AddBackPack()
+    {
+        if (backPackState != 0)
+        {
+           
+                GetComponent<SpriteRenderer>().sprite = backPackIdle;
+        }
+            
+    }
 
     
 

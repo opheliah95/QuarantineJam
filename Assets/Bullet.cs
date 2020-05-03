@@ -16,8 +16,15 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        gameObject.GetComponent<Rigidbody2D>().velocity = transform.right * speed;
+        fly();
         Invoke("DestroyProjectile", lifetime);
+    }
+
+    void fly()
+    {
+        Transform head = GameObject.FindWithTag("Player").GetComponent<PlayerManager>().transform;
+        float dir = head.localScale.x;
+        gameObject.GetComponent<Rigidbody2D>().velocity = transform.right * speed * dir;
     }
 
     // Update is called once per frame

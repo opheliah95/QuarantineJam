@@ -20,33 +20,30 @@ public class Dialogue : MonoBehaviour
 
     public void startTyping()
     {
+        textDisplay.text = "";
         StartCoroutine(Type());
+    }
+
+    public void clearDialogue()
+    {
+        textDisplay.text = "";
     }
   
     IEnumerator Type()
     {
         characterNameDisplay.text = characterName[index];
 
-        // clean the text
-        if (index == 0)
-            textDisplay.text = "";
-
         foreach(char letter in sentences[index].ToCharArray())
         {
             textDisplay.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
+
+        continueButton.SetActive(true);
     }
 
     
-    private void Update()
-    {
-        if(textDisplay.text == sentences[index])
-        {
-            continueButton.SetActive(true);
-        }
-    }
-    
+   
 
 
    
@@ -62,11 +59,12 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            textDisplay.text = "...";
+            //textDisplay.text = "...";
+            Debug.Log("gone to zero");
             index = 0;
             dialogueObject.GetComponent<DialogueInstances>().dialogueBox.SetActive(false);
-            dialogueObject.GetComponent<DialogueInstances>().activated = false;
-            dialogueObject.GetComponent<DialogueInstances>().SettingPlayerAndEnemy(true);
+            //dialogueObject.GetComponent<DialogueInstances>().activated = false;
+            //dialogueObject.GetComponent<DialogueInstances>().SettingPlayerAndEnemy(true);
         }
     }
 }

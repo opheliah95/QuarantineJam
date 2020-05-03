@@ -13,6 +13,7 @@ public class Rotate : MonoBehaviour
     [SerializeField]
     Vector2 mouseMovement;
 
+    public bool rotationDirRight = true;
 
     private void Awake()
     {
@@ -33,7 +34,7 @@ public class Rotate : MonoBehaviour
         // rotate item to mouse pointer
         transform.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
 
-
+        
         // fix when mouse is on the other side of the body
         if((rotationAngle < -90 || rotationAngle > 90))
         {
@@ -48,8 +49,23 @@ public class Rotate : MonoBehaviour
             }
 
         }
-       
         
+        
+        if(Input.GetAxis("Horizontal") == 0)
+            flipCharacter(difference);
+       
+
+    }
+
+    void flipCharacter(Vector2 difference)
+    {
+        // flip character 
+        rotationDirRight = player.GetComponent<PlayerManager>().facingRight;
+        if (difference.x >= 0 && !rotationDirRight || (difference.x < 0 && rotationDirRight))
+        { // mouse is on right side of player
+            player.GetComponent<PlayerManager>().flipCharacterOnly();
+        }
+       
     }
 
 

@@ -10,13 +10,16 @@ public class DialogueInstances : MonoBehaviour
     [SerializeField]
     Dialogue dialogueManager;
 
-    public bool activated;
 
     [SerializeField]
     public GameObject dialogueBox;
 
     [SerializeField]
     public GameObject continueButton;
+
+
+    [SerializeField]
+    bool activated;
 
     private void Start()
     {
@@ -25,12 +28,14 @@ public class DialogueInstances : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player" && !activated)
         {
+            activated = true;
             dialogueBox.SetActive(true);
             //SettingPlayerAndEnemy(false);
+
             // if it is a different dialogue then set index to zero
             if(dialogueManager.dialogueObject != gameObject)
             {
@@ -41,16 +46,18 @@ public class DialogueInstances : MonoBehaviour
             dialogueManager.characterName = characterName;
             dialogueManager.sentences = sentences;
             dialogueManager.startTyping();
-            activated = true;
         }
     }
 
+
     private void OnTriggerExit2D(Collider2D collision)
     {
+        Debug.Log("exit area");
         activated = false;
+        dialogueManager.clearDialogue();
         dialogueBox.SetActive(false);
         continueButton.SetActive(true);
-        SettingPlayerAndEnemy(true);
+        //SettingPlayerAndEnemy(true);
     }
 
     public void SettingPlayerAndEnemy( bool con = true)
