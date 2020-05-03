@@ -35,11 +35,18 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+
+        if (!collided)
+            basicBehaviours();
+        
+    }
+
+    public void basicBehaviours()
+    {
         if (!isInRange())
             Patrol();
         else
             Attack();
-
     }
 
     public bool isInRange()
@@ -119,7 +126,7 @@ public class Enemy : MonoBehaviour
 
         if(collision.gameObject.tag == "Enemy")
         {
-            collided = true;
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
     }
 

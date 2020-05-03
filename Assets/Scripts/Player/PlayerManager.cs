@@ -27,13 +27,16 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     Sprite backPackIdle;
 
+    public bool isGrounded;
+
     private void Awake()
     {
+        isGrounded = true;
         facingRight = true;
         controls = new Controller();
         animController = GetComponent<Animator>();
         controls.Player.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
-        controls.Player.Jump.performed += ctx => Jump();
+        //controls.Player.Jump.performed += ctx => Jump();
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -42,6 +45,11 @@ public class PlayerManager : MonoBehaviour
     {
         animController.SetFloat("BackPack", backPackState);
         Move();
+
+        if(Input.GetKeyDown(KeyCode.W) && isGrounded)
+        {
+            Jump();
+        }
     }
 
 
@@ -60,6 +68,7 @@ public class PlayerManager : MonoBehaviour
     {
         rb2d.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
         animController.SetTrigger("isJumping");
+        isGrounded = false;
     }
 
     void flipRight(float horizontal)
@@ -108,7 +117,11 @@ public class PlayerManager : MonoBehaviour
             
     }
 
-    
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        isGrounded = true;
+    }
+
 
     private void OnEnable()
     {
