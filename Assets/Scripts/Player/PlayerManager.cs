@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    [SerializeField]
+    LayerMask groundLayerMask;
+
     public float jumpHeight = 2f;
     public float moveSpeed = 5f;
-
+    public float groundDistance = 0.1f;
     public int backPackState = 0;
 
     public int damage = 1;
@@ -27,12 +30,11 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     Sprite backPackIdle;
 
-    public bool isGrounded;
+    private BoxCollider2D boxCollider;
 
     private void Awake()
     {
-        isGrounded = true;
-        facingRight = true;
+        
         controls = new Controller();
         animController = GetComponent<Animator>();
         controls.Player.Move.performed += ctx => movementInput = ctx.ReadValue<Vector2>();
@@ -40,13 +42,19 @@ public class PlayerManager : MonoBehaviour
         rb2d = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        boxCollider = GetComponent<BoxCollider2D>();
+        facingRight = true;
+    }
 
-    private void FixedUpdate()
+    private void Update()
     {
         animController.SetFloat("BackPack", backPackState);
+
         Move();
 
-        if(Input.GetKeyDown(KeyCode.W) && isGrounded)
+        if(Input.GetKeyDown(KeyCode.W) && isGrounded())
         {
             Jump();
         }
@@ -66,10 +74,19 @@ public class PlayerManager : MonoBehaviour
 
     public void Jump()
     {
-        rb2d.AddForce(new Vector2(0f, jumpHeight), ForceMode2D.Impulse);
+        rb2d.velocity = Vector2.up * jumpHeight;
         animController.SetTrigger("isJumping");
-        isGrounded = false;
     }
+
+
+    private bool isGrounded()
+    {
+        // look down for ground
+        RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, groundDistance, groundLayerMask);
+        Debug.Log(hit.collider);
+        return (hit.collider != null); // check if you hit something
+    }
+
 
     void flipRight(float horizontal)
     {
@@ -116,12 +133,6 @@ public class PlayerManager : MonoBehaviour
         }
             
     }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        isGrounded = true;
-    }
-
 
     private void OnEnable()
     {

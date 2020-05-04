@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public float speed = 3;
     public float waitTime = 1f;
     public float playerRadius = 0.5f;
+    public Transform range;
     public Transform[] moveSpots;
 
     [SerializeField]
@@ -20,12 +21,11 @@ public class Enemy : MonoBehaviour
     protected float minOffset = 0.2f;
     [SerializeField]
     protected float currentWaitTime;
-    [SerializeField]
-    bool collided = false;
+   
 
     public bool facingRight;
 
-    private void Start()
+    protected virtual void Start()
     {
         facingRight = true;
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -33,15 +33,14 @@ public class Enemy : MonoBehaviour
         randomSpot = Random.Range(0, moveSpots.Length);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
 
-        if (!collided)
-            basicBehaviours();
+        basicBehaviours();
         
     }
 
-    public void basicBehaviours()
+    public virtual void basicBehaviours()
     {
         if (!isInRange())
             Patrol();
@@ -49,29 +48,45 @@ public class Enemy : MonoBehaviour
             Attack();
     }
 
-    public bool isInRange()
+    
+    public virtual bool isInRange()
     {
         float distance = Vector2.Distance(player.position, transform.position);
         return (distance <= playerRadius);
     }
 
-    void retreat()
+    public virtual void Attack()
     {
-        flipEnemy(); // turns around
-        float offset = facingRight ? Random.Range(10, 20) : Random.Range(-20, -10);
-        Vector3 distanceOffset = new Vector3(offset, 0, 0);
-        Debug.Log("will retreat...");
-        transform.position = Vector2.MoveTowards(transform.position, transform.position + distanceOffset, speed * Time.deltaTime);
-    }
-
-
-    public void Attack()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        facingPlayer();
+        //transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        MoveTowardsPlayer();
         GetComponent<Animator>().SetTrigger("Attack");
     }
 
-    public void Patrol()
+    protected virtual void MoveTowardsPlayer()
+    {
+        Vector3 targetPos = player.position;
+        targetPos.y = transform.position.y;
+
+        // Get a direction vector from us to the target
+        Vector3 dir = targetPos - transform.position;
+
+        // Normalize it so that it's a unit direction vector
+        dir.Normalize();
+
+        // Move ourselves in that direction
+        transform.position += dir * speed * Time.deltaTime;
+    }
+
+    protected virtual void facingPlayer()
+    {
+        if (player.position.x > transform.position.x && !facingRight) //if the target is to the right of enemy and the enemy is not facing right
+            flipEnemy();
+        if (player.position.x < transform.position.x && facingRight)
+            flipEnemy();
+    }
+
+    public virtual void Patrol()
     {
         Vector3 target = moveSpots[randomSpot].position;
         transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
@@ -97,7 +112,7 @@ public class Enemy : MonoBehaviour
     }
 
 
-    public void flipEnemy()
+    public virtual void flipEnemy()
     {
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
@@ -116,7 +131,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -124,35 +139,19 @@ public class Enemy : MonoBehaviour
             HealthVisual.heartHealthSystem.Damage(damageToPlayer);
         }
 
+        // ignore collision with enemy
         if(collision.gameObject.tag == "Enemy")
         {
             Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            collided = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            collided = false;
-        }
-    }
-
    
 
-
-    private void OnDrawGizmosSelected()
+    protected void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, playerRadius);
+        Gizmos.DrawWireSphere(range.position, playerRadius);
     }
 
 
