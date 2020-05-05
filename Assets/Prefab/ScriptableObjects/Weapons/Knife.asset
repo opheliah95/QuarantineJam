@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9f62b903ab6a444a036368725a3bde, type: 3}
+  m_Name: Knife
+  m_EditorClassIdentifier: 
+  weaponName: Knife
+  spanishName: cuchillo
+  handImage: {fileID: 21300000, guid: 2aa87ff3f3c022942b77ef387469bf96, type: 3}
+  itemNumber: 1
+  ammoCount: 0
+  hasAmmoLimit: 0
+  prefab: {fileID: 6196252836545556321, guid: ce34705e3733f9c41b571e7bd9c762ff, type: 3}

@@ -66,8 +66,6 @@ public class Rotate : MonoBehaviour
         // get the angle of rotation
         float rotationAngle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
-        Debug.Log(rotationAngle);
-
         // rotate item to mouse pointer
         
         if (rotationAngle <= 90 && rotationAngle >= -90)

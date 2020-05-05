@@ -52,7 +52,7 @@ public class WeaponSwitch : MonoBehaviour
     }
 
     // function for select the weapon
-    void weaponSelect()
+    public void weaponSelect()
     {
         int i = 0;
         foreach(Transform weapon in transform)
@@ -61,6 +61,8 @@ public class WeaponSwitch : MonoBehaviour
             {
                 weapon.gameObject.SetActive(true);
                 currentWeapon = weapon.gameObject;
+                int num = currentWeapon.GetComponent<WeaponProfile>().weapon.itemNumber;
+                GetComponent<Animator>().SetFloat("Weapon", num);
             }
                 
             else
@@ -71,6 +73,10 @@ public class WeaponSwitch : MonoBehaviour
         }
     }
 
+    public void selectLastWeapon()
+    {
+        selectedWeapon = transform.childCount - 1;
+    }
 
    
 }

@@ -5,9 +5,6 @@ using UnityEngine;
 public class RangedWeapon : MonoBehaviour
 {
     [SerializeField]
-    public Transform weaponHead;
-
-    [SerializeField]
     protected GameObject shoots;
 
     public float coolOffTimer;
@@ -17,8 +14,6 @@ public class RangedWeapon : MonoBehaviour
 
     [SerializeField]
     protected float coolOff;
-
-    public Sprite handImage, UIImage;
 
     private void Awake()
     {
@@ -30,7 +25,6 @@ public class RangedWeapon : MonoBehaviour
     void Start()
     {
         coolOff = coolOffTimer;
-        weaponHead = gameObject.transform.GetChild(0);
     }
 
 
@@ -39,7 +33,7 @@ public class RangedWeapon : MonoBehaviour
     {
         if (coolOff <= 0)
         {
-            GameObject obj = Instantiate(shoots, weaponHead.position, transform.rotation);
+            GameObject obj = Instantiate(shoots, transform.position, transform.parent.rotation);
             SoundManager.playSound("Shoot");
             coolOff = coolOffTimer;
         }

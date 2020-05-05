@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
 
     void fly()
     {
-        Transform head = GameObject.FindWithTag("Player").GetComponent<PlayerManager>().transform;
+        Transform head = FindObjectOfType<PlayerManager>().transform;
         float dir = head.localScale.x;
         gameObject.GetComponent<Rigidbody2D>().velocity = transform.right * speed * dir;
     }
