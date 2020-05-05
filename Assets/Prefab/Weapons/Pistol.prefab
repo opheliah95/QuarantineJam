@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1501177851
-  m_SortingLayer: 5
+  m_SortingLayerID: 1899493257
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e02c64092b351e24d88fc08c7ff0c001, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -99,6 +99,8 @@ MonoBehaviour:
   shoots: {fileID: 7835252432010637870, guid: c37435922bc335b439f273945c7934b4, type: 3}
   coolOffTimer: 0
   coolOff: 0
+  handImage: {fileID: 21300000, guid: df77ddb149644db4fa8ec1032f498163, type: 3}
+  UIImage: {fileID: 0}
 --- !u!1 &8646173119070223776
 GameObject:
   m_ObjectHideFlags: 0

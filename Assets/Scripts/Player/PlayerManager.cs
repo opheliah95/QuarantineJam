@@ -101,7 +101,7 @@ public class PlayerManager : MonoBehaviour
         if (horizontal > 0 && !facingRight || horizontal < 0 && facingRight)
         {
             
-            flipCharacterOnly();
+            flipCharacter();
            
         }
     }
@@ -109,7 +109,7 @@ public class PlayerManager : MonoBehaviour
     public void flipCharacterAndWeapon()
     {
 
-        flipCharacterOnly();
+        flipCharacter();
 
         // hand script
         GameObject hand = GameObject.FindGameObjectWithTag("Hand");
@@ -121,9 +121,10 @@ public class PlayerManager : MonoBehaviour
         Vector3 theScale = hand.transform.localScale;
         theScale.x *= -1;
         hand.transform.localScale = theScale;
+        hand.GetComponent<Rotate>().rotationDirRight = facingRight;
     }
 
-    public void flipCharacterOnly()
+    public void flipCharacter()
     {
         // flip character
         facingRight = !facingRight;

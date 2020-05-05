@@ -28,6 +28,7 @@ public class Backpack : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>().backPackState = 1;
             GameObject myObj = randomItem();
             GameObject obj = Instantiate(myObj, transform.position, Quaternion.identity);
+            hand.GetComponent<SpriteRenderer>().sprite = myObj.GetComponent<RangedWeapon>().handImage;
             obj.transform.parent = hand.transform;
             obj.transform.localPosition = position;
             obj.transform.localScale = hand.transform.localScale;

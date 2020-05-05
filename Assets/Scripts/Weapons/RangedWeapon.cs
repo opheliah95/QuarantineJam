@@ -18,6 +18,8 @@ public class RangedWeapon : MonoBehaviour
     [SerializeField]
     protected float coolOff;
 
+    public Sprite handImage, UIImage;
+
     private void Awake()
     {
         controls = new Controller();
