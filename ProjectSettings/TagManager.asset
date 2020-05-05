@@ -71,11 +71,11 @@ TagManager:
   - name: Pistol
     uniqueID: 2793789445
     locked: 0
-  - name: Bullet
-    uniqueID: 1398835787
-    locked: 0
   - name: Arm
     uniqueID: 146603003
+    locked: 0
+  - name: Bullet
+    uniqueID: 1398835787
     locked: 0
   - name: Dialogue
     uniqueID: 1098256771

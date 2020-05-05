@@ -14,6 +14,9 @@ public class Rotate : MonoBehaviour
     Vector2 mouseMovement;
 
     public bool rotationDirRight = true;
+    public bool justFlipped = false;
+
+    public float countDownBeforeFlip;
 
     private void Awake()
     {
@@ -22,26 +25,30 @@ public class Rotate : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    private void Update()
     {
         // if the mouse does not move then do nothing
-        if ((Input.GetAxis("Mouse X") != 0) || (Input.GetAxis("Mouse Y") != 0))
+        if (((Input.GetAxis("Mouse X") != 0) || (Input.GetAxis("Mouse Y") != 0)))
         {
             Vector3 difference = offsetPosBetweenMouseAndCamera();
-
-            if (flipCharacter(difference))
-                return;
-
+            flipCharacter(difference);
             rotateWeapon(difference);
 
+
         }
-            
 
-       
-        
-        
-       
+    }
 
+    void countdownBeforeFlippingArm()
+    {
+        countDownBeforeFlip += Time.deltaTime;
+
+        if(countDownBeforeFlip >= 0.1)
+        {
+
+            countDownBeforeFlip = 0;
+            justFlipped = false;
+        }
     }
 
     Vector3 offsetPosBetweenMouseAndCamera()
@@ -53,55 +60,51 @@ public class Rotate : MonoBehaviour
     }
 
 
-    void rotateWeapon(Vector3 difference)
+    bool rotateWeapon(Vector3 difference)
     {
-       
 
         // get the angle of rotation
         float rotationAngle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
+        Debug.Log(rotationAngle);
+
         // rotate item to mouse pointer
-        transform.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
+        
+        if (rotationAngle <= 90 && rotationAngle >= -90)
+            transform.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
+
+        else if ((rotationAngle < -90 || rotationAngle > 90))
+            transform.rotation = Quaternion.Euler(0f, 0f, rotationAngle + 180);
 
 
-        // fix when mouse is on the other side of the body
-        if ((rotationAngle < -90 || rotationAngle > 90))
-        {
-            
 
-            if (player.transform.eulerAngles.y == 0)
-            {
-                transform.localRotation = Quaternion.Euler(180, 0, -rotationAngle);
-            }
-            else if (player.transform.eulerAngles.y == 180)
-            {
-                transform.localRotation = Quaternion.Euler(180, 180, -rotationAngle);
-            }
-
-        }
-
+        return true;
         
        
 
     }
-    bool flipCharacter(Vector2 difference)
+    void flipCharacter(Vector2 difference)
     {
         // flip character 
         rotationDirRight = player.GetComponent<PlayerManager>().facingRight;
+
         if (difference.x >= 0 && !rotationDirRight || (difference.x < 0 && rotationDirRight))
         { // mouse is on right side of player
             player.GetComponent<PlayerManager>().flipCharacter();
-
-            Vector3 localScale = transform.localScale;
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            transform.localScale = theScale;
-
-            return true;
+            justFlipped = true;
+            return;
         }
 
-        return false;
+        justFlipped = false;
        
+    }
+
+    void aramRotation()
+    {
+        Vector3 localScale = transform.localScale;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 
 
