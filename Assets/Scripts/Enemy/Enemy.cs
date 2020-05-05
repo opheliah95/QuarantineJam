@@ -35,6 +35,11 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (PlayerManager.isTalking)
+        {
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            return;
+        }
 
         basicBehaviours();
         

@@ -5,6 +5,7 @@ using UnityEngine;
 public class MeleeWeapon : MonoBehaviour
 {
     GameObject player;
+    GameObject arm;
     public Transform attackPos;
     public int damage = 1;
     public float attackRange;
@@ -26,6 +27,7 @@ public class MeleeWeapon : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        arm = GameObject.FindGameObjectWithTag("Hand");
     }
 
     void Shoot()
@@ -38,7 +40,7 @@ public class MeleeWeapon : MonoBehaviour
 
         }
 
-        player.GetComponent<Animator>().SetTrigger("Stab");
+        arm.GetComponent<Animator>().SetTrigger("Stab");
         SoundManager.playSound("Knife");
     }
 

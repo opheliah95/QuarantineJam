@@ -13,8 +13,10 @@ public class DialogueTrigger : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        Debug.Log(DialogueManager.dialogueEnd);
+        if(collision.gameObject.tag == "Player" && !DialogueManager.dialogueEnd)
         {
+            Debug.Log("dora");
             TriggerDialogue();
         }
     }
@@ -24,6 +26,7 @@ public class DialogueTrigger : MonoBehaviour {
         if (collision.gameObject.tag == "Player")
         {
             FindObjectOfType<DialogueManager>().EndDialogue();
+            DialogueManager.dialogueEnd = false;
         }
     }
 }

@@ -32,6 +32,8 @@ public class PlayerManager : MonoBehaviour
 
     private BoxCollider2D boxCollider;
 
+    public static bool isTalking;
+
     private void Awake()
     {
         
@@ -51,6 +53,12 @@ public class PlayerManager : MonoBehaviour
     private void Update()
     {
         animController.SetFloat("BackPack", backPackState);
+
+        if(isTalking)
+        {
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;// you cannot move
+            return;
+        }
 
         Move();
 

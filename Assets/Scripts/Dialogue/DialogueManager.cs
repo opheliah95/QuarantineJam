@@ -13,6 +13,8 @@ public class DialogueManager : MonoBehaviour {
 	public Animator animator;
     public GameObject instructions;
 
+    public static bool dialogueEnd = false;
+
 	private Queue<string> sentences = new Queue<string>();
 
     [SerializeField]
@@ -31,6 +33,12 @@ public class DialogueManager : MonoBehaviour {
 
     public void startDialogue(List<Dialogue> dialogues)
     {
+       
+        if (dialogueBox == null) return;
+
+        // if player is talking then  he cannot move
+        PlayerManager.isTalking = true;
+
         dialogueBox.SetActive(true);
         // clear current dialogue
         if(dialogueChunks.Count != 0)
@@ -115,6 +123,8 @@ public class DialogueManager : MonoBehaviour {
 	public void EndDialogue()
 	{
         dialogueBox.SetActive(false);
+        dialogueEnd = true;
+        PlayerManager.isTalking = false;
 		//animator.SetBool("IsOpen", false);
 	}
 
