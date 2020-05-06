@@ -134,7 +134,6 @@ public class DialogueManager : MonoBehaviour {
         dialogueEnd = true;
         sentenceEnd = true;
         PlayerManager.isTalking = false;
-		//animator.SetBool("IsOpen", false);
 	}
 
     public void branchedDialogueOption(List<Dialogue> dialogues, int index, string newSentences)

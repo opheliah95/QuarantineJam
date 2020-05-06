@@ -39,6 +39,7 @@ public class MeleeWeapon : MonoBehaviour
 
         foreach(Collider2D enemy in enemies)
         {
+            Debug.Log(enemy.gameObject.GetComponent<Enemy>());
             enemy.gameObject.GetComponent<Enemy>().takeDamage(damage);
 
         }

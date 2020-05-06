@@ -13,7 +13,7 @@ public class DialogueTrigger : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player" && !DialogueManager.dialogueEnd)
+        if(collision.gameObject.tag == "Player" && !PlayerManager.isTalking)
         {
             TriggerDialogue();
         }
@@ -24,7 +24,7 @@ public class DialogueTrigger : MonoBehaviour {
         if (collision.gameObject.tag == "Player")
         {
             FindObjectOfType<DialogueManager>().EndDialogue();
-            DialogueManager.dialogueEnd = false;
+            PlayerManager.isTalking = false;
         }
     }
 }

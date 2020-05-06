@@ -85,6 +85,7 @@ public class HealthVisual : MonoBehaviour
     private void HeartHealthSystem_OnDamaged(object sender, EventArgs e) 
     {
         //Transform pos = GameObject.FindWithTag("PlayerCenter").transform;
+        SoundManager.playSound("Hurt");
         refreshAllHearts();
     }
 

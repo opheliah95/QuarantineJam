@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
    
 
     public bool facingRight;
+    public AudioClip hurtSound;
 
     protected virtual void Start()
     {
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         currentWaitTime = waitTime;
         randomSpot = Random.Range(0, moveSpots.Length);
+        hurtSound = FindObjectOfType<EnemySoundManager>().randomEnemyHurt();
     }
 
     protected virtual void Update()
@@ -130,6 +132,7 @@ public class Enemy : MonoBehaviour
     {
 
         health -= damage;
+        FindObjectOfType<EnemySoundManager>().playSound(hurtSound);
         
         if(health <= 0)
             Destroy(gameObject);
@@ -140,7 +143,6 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            SoundManager.playSound("Hurt");
             HealthVisual.heartHealthSystem.Damage(damageToPlayer);
         }
 

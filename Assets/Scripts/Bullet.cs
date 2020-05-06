@@ -14,13 +14,13 @@ public class Bullet : MonoBehaviour
 
     public LayerMask whatIsSoild;
 
-    private void Start()
+    protected virtual void Start()
     {
         fly();
         Invoke("DestroyProjectile", lifetime);
     }
 
-    void fly()
+    protected virtual void fly()
     {
         Transform head = FindObjectOfType<PlayerManager>().transform;
         float dir = head.localScale.x;
@@ -28,10 +28,9 @@ public class Bullet : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward, distance, whatIsSoild);
-        //gameObject.GetComponent<Rigidbody2D>().AddForce(transform.forward* speed * Time.deltaTime);
 
         if(hit.collider != null)
         {
@@ -46,7 +45,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    void DestroyProjectile()
+    protected void DestroyProjectile()
     {
         Destroy(gameObject);
     }
