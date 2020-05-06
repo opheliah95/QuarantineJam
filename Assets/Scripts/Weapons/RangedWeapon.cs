@@ -31,6 +31,9 @@ public class RangedWeapon : MonoBehaviour
 
     void Shoot()
     {
+        if (PlayerManager.isTalking)
+            return;
+
         if (coolOff <= 0)
         {
             GameObject obj = Instantiate(shoots, transform.position, transform.parent.rotation);

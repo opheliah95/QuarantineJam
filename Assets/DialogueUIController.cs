@@ -11,7 +11,7 @@ public class DialogueUIController : MonoBehaviour
 
     private void Update()
     {
-        if(isEnabled && Input.anyKeyDown)
+        if(isEnabled && Input.anyKeyDown && DialogueManager.sentenceEnd)
         {
             FindObjectOfType<DialogueManager>().DisplayNextSentence();
         }

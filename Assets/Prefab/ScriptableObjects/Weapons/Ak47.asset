@@ -16,6 +16,6 @@ MonoBehaviour:
   spanishName: AK47
   handImage: {fileID: 21300000, guid: cb9ea25b7efe32d4bbc5a4a62a56ae95, type: 3}
   itemNumber: 3
-  ammoCount: 0
-  hasAmmoLimit: 0
+  ammoCount: 100
+  hasAmmoLimit: 1
   prefab: {fileID: 4822286635220835812, guid: fd630db10216d01448c3a526f0bd41ba, type: 3}

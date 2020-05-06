@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class ConditionTriggeredDialogue : MonoBehaviour
 {
+
     public List<Dialogue> dialogues;
 
-    private void OnDestroy()
-    {
-        FindObjectOfType<DialogueManager>().startDialogue(dialogues);
-    }
+   
 }

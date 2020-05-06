@@ -32,6 +32,9 @@ public class MeleeWeapon : MonoBehaviour
 
     void Shoot()
     {
+        if (PlayerManager.isTalking)
+            return;
+
         Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
 
         foreach(Collider2D enemy in enemies)

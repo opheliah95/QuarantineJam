@@ -28,7 +28,7 @@ public class Rotate : MonoBehaviour
     private void Update()
     {
         // if the mouse does not move then do nothing
-        if (((Input.GetAxis("Mouse X") != 0) || (Input.GetAxis("Mouse Y") != 0)))
+        if (((Input.GetAxis("Mouse X") != 0) || (Input.GetAxis("Mouse Y") != 0)) && !PlayerManager.isTalking)
         {
             Vector3 difference = offsetPosBetweenMouseAndCamera();
             flipCharacter(difference);

@@ -160,6 +160,16 @@ public class Enemy : MonoBehaviour
     }
 
 
+    private void OnDestroy()
+    {
+        if(GetComponent<ConditionTriggeredDialogue>()!=null)
+        {
+            List<Dialogue> dial = GetComponent<ConditionTriggeredDialogue>().dialogues;
+            FindObjectOfType<DialogueManager>().startDialogue(dial);
+           
+        }
+    }
+
 
 
 

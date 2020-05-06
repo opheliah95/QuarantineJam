@@ -26,6 +26,8 @@ public class WeaponInventory : MonoBehaviour
         if (!hasPickedUP)
         {
             weaponPickup();
+            objectDisappear();
+
         }
 
     }
@@ -35,6 +37,11 @@ public class WeaponInventory : MonoBehaviour
         hand = GameObject.FindGameObjectWithTag("Hand");
     }
 
+    protected virtual void objectDisappear()
+    {
+        // disable sprite
+        GetComponent<SpriteRenderer>().enabled = false;
+    }
 
     protected virtual void weaponPickup()
     {
@@ -51,9 +58,7 @@ public class WeaponInventory : MonoBehaviour
         // switch current weapon held
         switchWeapon(itemNumber, obj);
 
-        // disable sprite
-        GetComponent<SpriteRenderer>().enabled = false;
-
+        
         // cannot pickup again
         hasPickedUP = true;
     }

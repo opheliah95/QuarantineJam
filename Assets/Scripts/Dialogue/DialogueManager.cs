@@ -14,7 +14,7 @@ public class DialogueManager : MonoBehaviour {
     public GameObject instructions;
 
     public static bool dialogueEnd = false;
-
+    public static bool sentenceEnd = false;
 	private Queue<string> sentences = new Queue<string>();
 
     [SerializeField]
@@ -56,13 +56,19 @@ public class DialogueManager : MonoBehaviour {
 
     public void nextChunk()
     {
-        Debug.Log(dialogueChunks.Count);
-
+       
         if (dialogueChunks.Count > 0)
         {
             // drop the first dialogue chunk
             Dialogue chunk = dialogueChunks.Dequeue();
             dequedDialogue = chunk; // assign it to dialogue to be removed
+
+            // code to handle animation
+            if (chunk.animationAssociated.Length != 0)
+            {
+                StartCoroutine(playActionAttachedWithDialogue(chunk.objectItself, chunk.animationAssociated));
+            }
+
 
             nameText.GetComponent<TextMeshProUGUI>().text = chunk.name;
             characterImage.GetComponent<Image>().sprite = chunk.characterImage;
@@ -113,19 +119,46 @@ public class DialogueManager : MonoBehaviour {
 	IEnumerator TypeSentence (string sentence)
 	{
 		dialogueText.text = "";
+        sentenceEnd = false;
 		foreach (char letter in sentence.ToCharArray())
 		{
 			dialogueText.text += letter;
 			yield return null;
 		}
+        sentenceEnd = true;
 	}
 
 	public void EndDialogue()
 	{
         dialogueBox.SetActive(false);
         dialogueEnd = true;
+        sentenceEnd = true;
         PlayerManager.isTalking = false;
 		//animator.SetBool("IsOpen", false);
 	}
+
+    public void branchedDialogueOption(List<Dialogue> dialogues, int index, string newSentences)
+    {
+        Debug.Log(newSentences);
+        dialogues[index].sentences[0] = newSentences;
+    }
+
+    public void CountDownForDialogue(List<Dialogue> dialogues, float seconds = 0.5f)
+    {
+        StartCoroutine(countDownFunc(seconds, dialogues));
+    }
+
+    IEnumerator countDownFunc(float seconds, List<Dialogue> dialogues)
+    {
+        yield return new WaitForSeconds(seconds);
+
+        startDialogue(dialogues);
+    }
+
+    IEnumerator playActionAttachedWithDialogue(GameObject obj, string action)
+    {
+        obj.GetComponent<Animator>().SetTrigger(action);
+        yield return new WaitForSeconds(0.8f);
+    }
 
 }

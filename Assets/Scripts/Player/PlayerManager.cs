@@ -91,7 +91,7 @@ public class PlayerManager : MonoBehaviour
     {
         // look down for ground
         RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, groundDistance, groundLayerMask);
-        Debug.Log(hit.collider);
+        //Debug.Log(hit.collider);
         return (hit.collider != null); // check if you hit something
     }
 

@@ -14,4 +14,7 @@ public class Dialogue {
 
     [TextArea(3,10)]
     public string instructionsFollowed;
+
+    public string animationAssociated;
+    public GameObject objectItself;
 }

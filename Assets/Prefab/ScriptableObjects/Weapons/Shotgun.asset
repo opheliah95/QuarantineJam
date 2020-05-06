@@ -16,6 +16,6 @@ MonoBehaviour:
   spanishName: Escopeta
   handImage: {fileID: 21300000, guid: af4219096e2e5824ab8bd1dabf8f8e01, type: 3}
   itemNumber: 4
-  ammoCount: 0
-  hasAmmoLimit: 0
+  ammoCount: 80
+  hasAmmoLimit: 1
   prefab: {fileID: 2046922276889103341, guid: f3dc598155912bb41a4d1820cf59c26d, type: 3}
